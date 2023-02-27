@@ -9,7 +9,7 @@
     "dist/**/*"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha '__tests__/**/*.ts'",
     "build": "tsc --watch"
   },
   "repository": {
@@ -25,7 +25,12 @@
   "author": "Xavier Fabregat Pous",
   "license": "MIT",
   "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^10.0.1",
     "@types/node": "^18.14.2",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
   }
 }
