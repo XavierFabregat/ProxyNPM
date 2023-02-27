@@ -19,7 +19,7 @@ export function createProxy<T extends {[key: string]: any}>(
   const handler: ProxyHandler<T> = {
     set(target, key: string & keyof T, value: T[string & keyof T]) {
       const prevValue = target[key];
-      if (!prevValue) {
+      if (prevValue === undefined) {
         const listenerKey = `on${key[0].toUpperCase()}${key.slice(1)}Add` as keyof Listener<T>;
         if (listener[listenerKey] && listener[listenerKey] instanceof Function) {
           const listenerFunc = listener[listenerKey] as (newValue: typeof value, target?: T) => void;
@@ -34,6 +34,19 @@ export function createProxy<T extends {[key: string]: any}>(
       if (listener[listenerKey] && listener[listenerKey] instanceof Function) {
         const listenerFunc = listener[listenerKey] as (newValue: typeof value, oldValue: typeof prevValue, target?: T) => void;
         listenerFunc(value, prevValue, target);
+      }
+      return true;
+    },
+    deleteProperty(target, key: string & keyof T) {
+      const prevValue = target[key];
+      if (prevValue === undefined) { // already deleted or never existed
+        return true;
+      }
+      delete target[key];
+      const listenerKey = `on${key[0].toUpperCase()}${key.slice(1)}Delete` as keyof Listener<T>;
+      if (listener[listenerKey] && listener[listenerKey] instanceof Function) {
+        const listenerFunc = listener[listenerKey] as (oldValue?: typeof prevValue, target?: T) => void;
+        listenerFunc(prevValue, target);
       }
       return true;
     }
