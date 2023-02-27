@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "test": "mocha '__tests__/**/*.ts'",
-    "build": "tsc --watch"
+    "build:dev": "tsc --watch",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
