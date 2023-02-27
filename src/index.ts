@@ -19,6 +19,13 @@ export function createProxy<T extends {[key: string]: any}>(
   const handler: ProxyHandler<T> = {
     set(target, key: string & keyof T, value: T[string & keyof T]) {
       const prevValue = target[key];
+      if (!prevValue) {
+        const listenerKey = `on${key[0].toUpperCase()}${key.slice(1)}Add` as keyof Listener<T>;
+        if (listener[listenerKey] && listener[listenerKey] instanceof Function) {
+          const listenerFunc = listener[listenerKey] as (newValue: typeof value, target?: T) => void;
+          listenerFunc(value, target);
+        }
+      }
       target[key] = value;
       const listenerKey = `on${key[0].toUpperCase()}${key.slice(1)}Change` as keyof Listener<T>;
       if (listener[listenerKey] && listener[listenerKey] instanceof Function) {
