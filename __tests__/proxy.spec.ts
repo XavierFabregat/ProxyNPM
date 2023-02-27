@@ -109,4 +109,18 @@ describe('Delete Properties', () => {
     delete proxyDog.breed;
     delete proxyDog.sickness;
   });
+
+  it('callbacks should not be fired when the property is set to undefined or null', () => {
+    const listener: Listener<Dog> = {
+      onBreedDelete: () => {
+        throw new Error('onBreedDelete should not be called');
+      },
+      onSicknessDelete: () => {
+        throw new Error('onSicknessDelete should not be called');
+      }
+    };
+    const proxyDog = createProxy(dog, listener);
+    proxyDog.breed = undefined;
+    proxyDog.sickness = null;
+  });
 });
