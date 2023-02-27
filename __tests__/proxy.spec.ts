@@ -70,16 +70,24 @@ describe('Change Properties', () => {
       },
       onSicknessChange: (value, oldValue) => {
         expect(value).to.equal(null);
-        expect(oldValue).to.equal(undefined);
-      }
+        expect(oldValue).to.eql(['cough', 'fever']);
+      },
+      onSicknessAdd: (value, target) => {},
     };
     const proxyDog = createProxy(dog, listener);
+    proxyDog.sickness = ['cough', 'fever'];
     proxyDog.breed = undefined;
     proxyDog.sickness = null;
   });
 });
 
 describe('Delete Properties', () => {
+
+   beforeEach(()=> {
+    dog.name = 'Rex';
+    dog.age = 3;
+  });
+
   it('callbacks should be fired when the property is deleted', () => {
     const listener: Listener<Dog> = {
       onBreedDelete: (oldValue, target) => {
@@ -92,6 +100,7 @@ describe('Delete Properties', () => {
       }
     };
     const proxyDog = createProxy(dog, listener);
+    proxyDog.breed = 'Labrador';
     delete proxyDog.breed;
     delete proxyDog.sickness;
   });
@@ -121,6 +130,38 @@ describe('Delete Properties', () => {
     };
     const proxyDog = createProxy(dog, listener);
     proxyDog.breed = undefined;
+    proxyDog.sickness = null;
+  });
+});
+
+describe('Add Properties', () => {
+
+   beforeEach(()=> {
+    dog.name = 'Rex';
+    dog.age = 3;
+  })
+
+  it('callbacks should be fired when the property is added', () => {
+    let test = false;
+    const listener: Listener<Dog> = {
+      onBreedAdd: (value, target) => {
+        test = true;
+        expect(value).to.equal('Labrador');
+        expect(target?.breed).to.equal('Labrador')
+      }
+    };
+    const proxyDog = createProxy(dog, listener);
+    proxyDog.breed = 'Labrador';
+    expect(test).to.equal(true);
+  });
+
+  it('callbacks should not be fired when the property is not added', () => {
+    const listener: Listener<Dog> = {
+      onSicknessAdd: () => {
+        throw new Error('onSicknessAdd should not be called');
+      }
+    };
+    const proxyDog = createProxy(dog, listener);
     proxyDog.sickness = null;
   });
 });
