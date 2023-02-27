@@ -1,10 +1,19 @@
 {
-  "name": "@xavi/proxy",
+  "name": "proxy-objects",
   "version": "1.0.0",
   "description": "Npm module to create proxy objects with listeners when properties are created, changed or deleted.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XavierFabregat/ProxyNPM.git"
   },
   "keywords": [
     "npm",
@@ -13,5 +22,9 @@
     "proxy"
   ],
   "author": "Xavier Fabregat Pous",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.14.2",
+    "typescript": "^4.9.5"
+  }
 }
