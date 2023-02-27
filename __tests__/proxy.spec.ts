@@ -8,14 +8,21 @@ type Dog = {
   sickness?: string[] | null;
 }
 
+
 const dog: Dog = {
   name: 'Rex',
   age: 3,
   breed: 'Labrador'
 };
 
-
 describe('Change Properties', () => {
+  
+  beforeEach(()=> {
+    dog.name = 'Rex';
+    dog.age = 3;
+    dog.breed = 'Labrador';
+  })
+
   it('callbacks should be fired when the property is changed', () => {
     const listener: Listener<Dog> = {
       onNameChange: (value, oldValue) => {
@@ -50,16 +57,16 @@ describe('Change Properties', () => {
       }
     };
     const proxyDog = createProxy(dog, listener);
-    proxyDog.name = 'Rexy';
-    proxyDog.age = 4;
-    proxyDog.breed = 'Poodle';
+    proxyDog.name = 'Rex';
+    proxyDog.age = 3;
+    proxyDog.breed = 'Labrador';
   });
 
   it('callbacks should be fired when the property is changed to undefined or null', () => {
     const listener: Listener<Dog> = {
       onBreedChange: (value, oldValue) => {
         expect(value).to.equal(undefined);
-        expect(oldValue).to.equal('Poodle');
+        expect(oldValue).to.equal('Labrador');
       },
       onSicknessChange: (value, oldValue) => {
         expect(value).to.equal(null);
@@ -70,6 +77,36 @@ describe('Change Properties', () => {
     proxyDog.breed = undefined;
     proxyDog.sickness = null;
   });
+});
 
+describe('Delete Properties', () => {
+  it('callbacks should be fired when the property is deleted', () => {
+    const listener: Listener<Dog> = {
+      onBreedDelete: (oldValue, target) => {
+        expect(oldValue).to.equal('Labrador');
+        expect(target?.breed).to.equal(undefined)
+      },
+      onSicknessDelete: (oldValue, target) => {
+        expect(oldValue).to.equal(null);
+        expect(target?.sickness).to.equal(undefined)
+      }
+    };
+    const proxyDog = createProxy(dog, listener);
+    delete proxyDog.breed;
+    delete proxyDog.sickness;
+  });
 
+  it('callbacks should not be fired when the property is not deleted', () => {
+    const listener: Listener<Dog> = {
+      onBreedDelete: () => {
+        throw new Error('onBreedDelete should not be called');
+      },
+      onSicknessDelete: () => {
+        throw new Error('onSicknessDelete should not be called');
+      }
+    };
+    const proxyDog = createProxy(dog, listener);
+    delete proxyDog.breed;
+    delete proxyDog.sickness;
+  });
 });
