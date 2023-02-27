@@ -3,10 +3,12 @@
     "target": "ES2017",
     "rootDir": "src",
     "outDir": "dist",
+    "module": "ESNext",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
     "noImplicitAny": true,
     "skipLibCheck": true,
+    "declaration": true
   }
 }
