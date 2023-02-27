@@ -1,0 +1,17 @@
+{
+  "name": "@xavi/proxy",
+  "version": "1.0.0",
+  "description": "Npm module to create proxy objects with listeners when properties are created, changed or deleted.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm",
+    "typescript",
+    "listeners",
+    "proxy"
+  ],
+  "author": "Xavier Fabregat Pous",
+  "license": "MIT"
+}
