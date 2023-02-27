@@ -1,8 +1,8 @@
 !dist
 !package.json
 !tsconfig.json
-!.mocharc.json
-!__tests__
 !.gitignore
+__tests__
+.mocharc.json
 src
 node_modules
