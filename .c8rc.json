@@ -14,8 +14,7 @@
     "lcov",
     "text",
     "text-summary",
-    "json",
-    "json-summary"
+    "json"
   ],
   "all": true
 }
