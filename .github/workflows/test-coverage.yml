@@ -27,7 +27,7 @@ jobs:
           npx c8 npm test -- --coverage ./coverage --coverageReporters="json-summary"
 
       - name: List files
-        run: cd coverage && ls -la
+        run: cd coverage/temp && ls -la
 
       - name: Jest Coverage Comment
         uses: MishaKav/jest-coverage-comment@main
