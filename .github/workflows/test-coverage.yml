@@ -1,6 +1,6 @@
 # This workflow will install dependencies, create coverage tests and run Jest Coverage Comment
 # For more information see: https://github.com/MishaKav/jest-coverage-comment/
-name: Jest Coverage Comment
+name: Test Coverage Comment
 on:
   pull_request:
     branches:
