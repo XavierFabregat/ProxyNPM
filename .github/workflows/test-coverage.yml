@@ -24,7 +24,7 @@ jobs:
 
       - name: Run tests
         run: |
-          npx c8 npm test -- --coverage ./coverage --reporter ['json-summary']
+          npx c8 npm test -- --coverage ./coverage --reporter json-summary
 
       - name: List files
         run: cd coverage/tmp && ls -la
