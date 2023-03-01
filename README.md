@@ -79,12 +79,12 @@ const dogListeners = {
   },
 };
 
-const proxy = createProxy(dog, dogListeners);
+const proxyDog = createProxy(dog, dogListeners);
 
 
-dog.name = 'Rexy'; // The dog's name changed from Rex to Rexy { name: 'Rexy', age: 3 }
-delete dog.age; // The dog's age was deleted, his age was 3
-dog.breed = 'Labrador'; // The dog's breed was added, his breed is Labrador his name is Rexy
+proxyDog.name = 'Rexy'; // The dog's name changed from Rex to Rexy { name: 'Rexy', age: 3 }
+delete proxyDog.age; // The dog's age was deleted, his age was 3
+proxyDog.breed = 'Labrador'; // The dog's breed was added, his breed is Labrador his name is Rexy
 
 ```
 
