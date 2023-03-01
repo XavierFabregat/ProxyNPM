@@ -1,6 +1,6 @@
 {
   "name": "listen-proxy",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Npm module to create proxy objects with listeners that will be fired when properties are created, changed or deleted.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
