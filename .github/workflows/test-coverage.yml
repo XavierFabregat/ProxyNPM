@@ -24,10 +24,7 @@ jobs:
 
       - name: Run tests
         run: |
-          npx c8 npm test -- --coverage ./coverage --config ./.c8rc.json
-
-      - name: List files
-        run: cd coverage/tmp && ls -la
+          npx c8 npm test 
 
       - name: Jest Coverage Comment
         uses: MishaKav/jest-coverage-comment@main
