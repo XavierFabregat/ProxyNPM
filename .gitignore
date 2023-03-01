@@ -1,4 +1,4 @@
 node_modules/
 dist/
 .c8rc.json
-coverage/
+#coverage/

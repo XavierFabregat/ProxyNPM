@@ -6,3 +6,6 @@ __tests__
 .mocharc.json
 src
 node_modules
+coverage
+.c8rc.json
+```
