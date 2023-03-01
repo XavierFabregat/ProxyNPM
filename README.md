@@ -8,6 +8,8 @@
 [![version](https://img.shields.io/npm/v/listen-proxy.svg?style=flat-square)](https://npmjs.org/listen-proxy)
 <!-- [![Coverage Status](https://coveralls.io/repos/github/XavierFabregat/ProxyNPM/badge.svg?branch=main)](https://coveralls.io/github/XavierFabregat/ProxyNPM?branch=main) -->
 [![license](https://img.shields.io/npm/l/listen-proxy?color=%23007a1f&style=flat-square)](https://github.com//XavierFabregat/blob/master/LICENSE)
+<a href="https://github.com/XavierFabregat/ProxyNPM/blob/229236742a0f210399f884745bb056fff194fea1/README.md"><img alt="Coverage: 100%" src="https://img.shields.io/badge/Coverage-100%25-brightgreen.svg" /></a>
+----------------
 
 [![dependancies](https://img.shields.io/librariesio/release/npm/listen-proxy?color=%23007a1f&style=flat-square)](https://libraries.io/npm/listen-proxy)
 [![downloads](https://img.shields.io/npm/dm/listen-proxy?style=flat-square&color=%23007a1f)](https://npmcharts.com/compare/listen-proxy)
@@ -15,7 +17,6 @@
 [![stargazers](https://img.shields.io/github/stars/XavierFabregat/ProxyNPM?style=social)](https://github.com/XavierFabregat/ProxyNPM/stargazers)
 [![number of forks](https://img.shields.io/github/forks/XavierFabregat/ProxyNPM?style=social)](https://github.com/XavierFabregat/ProxyNPM/fork)
 
-----------------
 
 </section>
 
